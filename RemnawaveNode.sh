@@ -57,7 +57,8 @@ fi
 echo "📄 正在创建 .env 配置文件..."
 cat <<EOF > .env
 APP_PORT=${APP_PORT}
-SSL_CERT=${SSL_CERT}
+
+${SSL_CERT}
 EOF
 echo "✅ .env 文件创建成功。"
 
