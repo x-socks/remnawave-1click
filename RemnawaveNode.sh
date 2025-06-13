@@ -25,20 +25,8 @@ apt-get install -y sudo curl apt-transport-https ca-certificates gnupg lsb-relea
 # 检查并安装 Docker
 if ! command -v docker &> /dev/null; then
     echo "    ->  Docker 未安装，正在为您自动安装..."
-    # 添加 Docker 官方 GPG 密钥
-    install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-    chmod a+r /etc/apt/keyrings/docker.asc
-
-    # 添加 Docker 仓库到 APT 源
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-      tee /etc/apt/sources.list.d/docker.list > /dev/null
-    apt-get update > /dev/null
-
-    # 安装 Docker 相关软件包
-    apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin > /dev/null
+    # 安装docker
+    sudo curl -fsSL https://get.docker.com | sh
     echo "    ✅ Docker 安装成功。"
 else
     echo "    ✅ Docker 已安装。"
