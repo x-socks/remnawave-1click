@@ -12,6 +12,7 @@ set -e
 # --- 检查脚本是否以 root 权限运行 ---
 if [ "$(id -u)" -ne 0 ]; then
   echo "⚠️  错误：此脚本必须以 root 权限运行。请使用 'sudo' 执行。"
+  apt install -y sudo
   exit 1
 fi
 
